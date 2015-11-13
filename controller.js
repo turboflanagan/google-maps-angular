@@ -46,7 +46,7 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
         	markerContentHTML += '<div class="state">State: ' + city.state + '</div>';
         	markerContentHTML += '<div class="land-area">Land Area: ' + city.landArea + '</div>';
         	markerContentHTML += '<div><a href="#" onclick="getDirections('+lat+','+lon+')">Get directions</a></div>';
-        	markerContentHTML += '<div><a href="#" onclick="zoomOnCity('+lat+','+lon+')">Show me the courses!</a></div>';
+        	markerContentHTML += '<div><a href="#" onclick="zoomOnCity('+lat+','+lon+')">Show me more info!</a></div>';
         markerContentHTML += '</div>';
 
         marker.content = markerContentHTML;
@@ -125,6 +125,18 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
 		  location: position,
 		  radius: 30000,
 		  types: ['food']
+		}, placesResults); 
+
+		service.nearbySearch({
+		  location: position,
+		  radius: 30000,
+		  types: ['library']
+		}, placesResults); 
+
+		service.nearbySearch({
+		  location: position,
+		  radius: 30000,
+		  types: ['movie_theater']
 		}, placesResults); 
     }
 
