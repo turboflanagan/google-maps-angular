@@ -119,8 +119,13 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
 		  location: position,
 		  radius: 30000,
 		  types: ['lodging']
-		}, placesResults);         	
+		}, placesResults);  
 
+		service.nearbySearch({
+		  location: position,
+		  radius: 30000,
+		  types: ['food']
+		}, placesResults); 
     }
 
 	function placesResults(results, status) {
@@ -148,9 +153,9 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
 				photo = '<img src="' + place.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 100})+'">';
 			}
 			var placeHTML = '<div class="location-image">' + photo + '</div>';
-			placeHTML += '<h5>' + place.vicinity + '</h6>';
+			placeHTML += '<h4>' + place.vicinity + '</h4>';
 			place.content = placeHTML;
-	 		infowindow.setContent('<h2>'+place.name + '</h2>' + place.content);
+	 		infowindow.setContent('<h4>'+place.name + '</h4>' + place.content);
 	 		infowindow.open(map, this);
   		});
 	}
