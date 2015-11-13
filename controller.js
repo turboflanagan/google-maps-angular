@@ -108,12 +108,7 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
 			zoom: 10
 		});
 		infowindow = new google.maps.InfoWindow();
-		var service = new google.maps.places.PlacesService(map);
-		service.nearbySearch({
-		  location: position,
-		  radius: 30000,
-		  types: ['park']
-		}, placesResults);         	
+		var service = new google.maps.places.PlacesService(map);      	
 
  		service.nearbySearch({
 		  location: position,
@@ -126,13 +121,7 @@ var mapctl = angular.module('myApp',[]).controller('mapCtrl', function($scope){
 		  radius: 30000,
 		  types: ['food']
 		}, placesResults); 
-
-		service.nearbySearch({
-		  location: position,
-		  radius: 30000,
-		  types: ['library']
-		}, placesResults); 
-
+		
 		service.nearbySearch({
 		  location: position,
 		  radius: 30000,
